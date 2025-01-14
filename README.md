@@ -15,3 +15,8 @@ Quartz is a set of tools that helps you publish your [digital garden](https://jz
 Quartz v4 features a from-the-ground rewrite focusing on end-user extensibility and ease-of-use.
 
 🔗 Read the official Quartz documentation and get started: https://quartz.jzhao.xyz/
+
+# To Do
+- [ ] Sort explorer by date for recent posts
+- [ ] Versioning tab emitter
+
