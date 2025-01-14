@@ -1,6 +1,6 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
-import { filterCoreTag } from "./quartz/util/functions"
+import { filterEssentialTag, onlyEssentialTag } from "./quartz/util/functions"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -26,10 +26,21 @@ export const defaultContentPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Search(),
+    // Search bar
+    Component.MobileOnly(Component.Search()),
+    Component.DesktopOnly(Component.Search({
+      desktopLayout: true
+    })),
+    // Change theme
     Component.Darkmode(),
+    // Explorer
+    Component.DesktopOnly(Component.Explorer({ // List core-tagged posts only
+      titleButton: false,
+      filterFn: onlyEssentialTag,
+    })),
     Component.DesktopOnly(Component.Explorer({
-      filterFn: filterCoreTag,
+      title: "A-Z",
+      filterFn: filterEssentialTag,
     })),
   ],
   right: [
@@ -45,10 +56,19 @@ export const defaultListPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Search(),
+    // Search bar
+    Component.MobileOnly(Component.Search()),
+    Component.DesktopOnly(Component.Search({
+      desktopLayout: true
+    })),
     Component.Darkmode(),
+    Component.DesktopOnly(Component.Explorer({ // List core-tagged posts only
+      titleButton: false,
+      filterFn: onlyEssentialTag,
+    })),
     Component.DesktopOnly(Component.Explorer({
-      filterFn: filterCoreTag,
+      title: "A-Z",
+      filterFn: filterEssentialTag,
     })),
   ],
   right: [],

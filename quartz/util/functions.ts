@@ -15,6 +15,12 @@ export const sortFileBFolder = (a: FileNode, b: FileNode) : number => {
     }
 }
 
-export const filterCoreTag = (node : FileNode) : boolean => {
-    return node.file?.frontmatter?.tags?.includes("core") !== true
+// filter posts tagged "core"
+export const filterEssentialTag = (node : FileNode) : boolean => {
+    return node.file?.frontmatter?.tags?.includes("essential") !== true
+}
+
+// include ony posts tagged "core"
+export const onlyEssentialTag = (node : FileNode) : boolean => {
+    return node.file?.frontmatter?.tags?.includes("essential") == true
 }

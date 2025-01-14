@@ -1,6 +1,11 @@
 # Static Site Library
 
-Static website developed to house my collection of markdown writings.
+Static website developed to house my collection of markdown writings, built on top of Quartz v4.
+
+## Modifications
+1. Additional options for Explorer component
+2. Custom sort and filter functions in ```util/functions.ts ```
+3. Mobile layout improvement
 
 # Quartz v4
 

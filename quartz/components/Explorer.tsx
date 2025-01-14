@@ -10,6 +10,7 @@ import { i18n } from "../i18n"
 
 // Options interface defined in `ExplorerNode` to avoid circular dependency
 const defaultOptions = {
+  titleButton: true,
   folderClickBehavior: "collapse",
   folderDefaultState: "collapsed",
   useSavedState: true,
@@ -86,7 +87,7 @@ export default ((userOpts?: Partial<Options>) => {
 
     return (
       <div class={classNames(displayClass, "explorer")}>
-        <button
+        {opts.titleButton ? <button
           type="button"
           id="explorer"
           data-behavior={opts.folderClickBehavior}
@@ -111,7 +112,8 @@ export default ((userOpts?: Partial<Options>) => {
           >
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
-        </button>
+        </button> : null }
+        
         <div id="explorer-content">
           <ul class="overflow" id="explorer-ul">
             <ExplorerNode node={fileTree} opts={opts} fileData={fileData} />
