@@ -16,7 +16,14 @@ Quartz v4 features a from-the-ground rewrite focusing on end-user extensibility 
 
 🔗 Read the official Quartz documentation and get started: https://quartz.jzhao.xyz/
 
+# Quick Start
+1. To initialize Quartz
+
+    ```npx quartz create```
+2. To build and preview
+
+    ```npx quartz build --serve```
 # To Do
-- [ ] Sort explorer by date for recent posts
+- [x] Recent notes
 - [ ] Versioning tab emitter
 

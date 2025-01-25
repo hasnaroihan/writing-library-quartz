@@ -1,6 +1,6 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
-import { filterEssentialTag, onlyEssentialTag } from "./quartz/util/functions"
+import { filterEssentialTag, filterEssentialTagPlugin, onlyEssentialTagPlugin, sortCreatedDateDesc } from "./quartz/util/functions"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -34,13 +34,18 @@ export const defaultContentPageLayout: PageLayout = {
     // Change theme
     Component.Darkmode(),
     // Explorer
-    Component.DesktopOnly(Component.Explorer({ // List core-tagged posts only
-      titleButton: false,
-      filterFn: onlyEssentialTag,
+    Component.DesktopOnly(Component.EssentialExplorer({ // List essential-tagged posts only
+      filter: onlyEssentialTagPlugin,
     })),
-    Component.DesktopOnly(Component.Explorer({
+    Component.DesktopOnly(Component.RecentNotes({
+      title: "Recent Posts",
+      limit: 2,
+      filter: filterEssentialTagPlugin,
+    })),
+    Component.DesktopOnly(Component.Explorer({ // Full list alphabetical sort without essential posts
       title: "A-Z",
       filterFn: filterEssentialTag,
+      folderDefaultState: "collapsed",
     })),
   ],
   right: [
@@ -62,12 +67,11 @@ export const defaultListPageLayout: PageLayout = {
       desktopLayout: true
     })),
     Component.Darkmode(),
-    Component.DesktopOnly(Component.Explorer({ // List core-tagged posts only
-      titleButton: false,
-      filterFn: onlyEssentialTag,
+    Component.DesktopOnly(Component.EssentialExplorer({ // List essential-tagged posts only
+      filter: onlyEssentialTagPlugin,
     })),
     Component.DesktopOnly(Component.Explorer({
-      title: "A-Z",
+      title: "A-Z Explorer",
       filterFn: filterEssentialTag,
     })),
   ],
