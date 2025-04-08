@@ -18,7 +18,10 @@ export const sharedPageComponents: SharedLayout = {
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
-    Component.Breadcrumbs(),
+    Component.ConditionalRender({
+      component: Component.Breadcrumbs(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
@@ -26,27 +29,16 @@ export const defaultContentPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    // Search bar
-    Component.MobileOnly(Component.Search()),
-    Component.DesktopOnly(Component.Search({
-      desktopLayout: true
-    })),
-    // Change theme
-    Component.Darkmode(),
-    // Explorer
-    Component.DesktopOnly(Component.EssentialExplorer({ // List essential-tagged posts only
-      filter: onlyEssentialTagPlugin,
-    })),
-    Component.DesktopOnly(Component.RecentNotes({
-      title: "Recent Posts",
-      limit: 2,
-      filter: filterEssentialTagPlugin,
-    })),
-    Component.DesktopOnly(Component.Explorer({ // Full list alphabetical sort without essential posts
-      title: "A-Z",
-      filterFn: filterEssentialTag,
-      folderDefaultState: "collapsed",
-    })),
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true,
+        },
+        { Component: Component.Darkmode() },
+      ],
+    }),
+    Component.Explorer(),
   ],
   right: [
     Component.Graph(),
@@ -61,19 +53,16 @@ export const defaultListPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    // Search bar
-    Component.MobileOnly(Component.Search()),
-    Component.DesktopOnly(Component.Search({
-      desktopLayout: true
-    })),
-    Component.Darkmode(),
-    Component.DesktopOnly(Component.EssentialExplorer({ // List essential-tagged posts only
-      filter: onlyEssentialTagPlugin,
-    })),
-    Component.DesktopOnly(Component.Explorer({
-      title: "A-Z Explorer",
-      filterFn: filterEssentialTag,
-    })),
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true,
+        },
+        { Component: Component.Darkmode() },
+      ],
+    }),
+    Component.Explorer(),
   ],
   right: [],
 }

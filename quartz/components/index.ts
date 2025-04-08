@@ -21,6 +21,8 @@ import RecentNotes from "./RecentNotes"
 import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
 import EssentialExplorer from "./EssentialExplorer"
+import Flex from "./Flex"
+import ConditionalRender from "./ConditionalRender"
 
 export {
   ArticleTitle,
@@ -45,5 +47,7 @@ export {
   NotFound,
   Breadcrumbs,
   Comments,
-  EssentialExplorer
+  EssentialExplorer,
+  Flex,
+  ConditionalRender,
 }
