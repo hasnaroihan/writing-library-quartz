@@ -1,6 +1,6 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
-import { filterEssentialTag, filterEssentialTagPlugin, onlyEssentialTagPlugin, sortCreatedDateDesc } from "./quartz/util/functions"
+//import { filterEssentialTag, filterEssentialTagPlugin, onlyEssentialTagPlugin, sortCreatedDateDesc } from "./quartz/util/functions"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -27,18 +27,32 @@ export const defaultContentPageLayout: PageLayout = {
     Component.TagList(),
   ],
   left: [
-    Component.PageTitle(),
+    Component.DesktopOnly(Component.PageTitle()),
     Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
+    // Component.Flex({
+    //   components: [
+    //     {
+    //       Component: Component.MobileOnly(Component.Explorer()),
+    //     },
+    //     {
+    //       Component: Component.Search(),
+    //       grow: true,
+    //       shrink: false,
+    //     },
+    //     { Component: Component.Darkmode() },
+    //   ],
+    // }),
+    //Component.DesktopOnly(Component.Explorer()),
+    Component.ExplorerContainer({
       components: [
         {
           Component: Component.Search(),
           grow: true,
+          shrink: false,
         },
         { Component: Component.Darkmode() },
-      ],
-    }),
-    Component.Explorer(),
+      ]
+    })
   ],
   right: [
     Component.Graph(),
@@ -54,13 +68,19 @@ export const defaultListPageLayout: PageLayout = {
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Flex({
+      gap: "0rem",
+      alignItems: "center",
+      justifyContent: "center",
       components: [
         {
           Component: Component.Search(),
           grow: true,
+          shrink: false,
         },
-        { Component: Component.Darkmode() },
+        { Component: Component.Darkmode(),
+        },
       ],
+      
     }),
     Component.Explorer(),
   ],

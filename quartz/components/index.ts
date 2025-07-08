@@ -23,6 +23,7 @@ import Comments from "./Comments"
 import EssentialExplorer from "./EssentialExplorer"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
+import ExplorerContainer from "./ExplorerContainer"
 
 export {
   ArticleTitle,
@@ -50,4 +51,5 @@ export {
   EssentialExplorer,
   Flex,
   ConditionalRender,
+  ExplorerContainer,
 }

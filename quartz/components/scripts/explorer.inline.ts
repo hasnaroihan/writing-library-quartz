@@ -21,7 +21,7 @@ type FolderState = {
 
 let currentExplorerState: Array<FolderState>
 function toggleExplorer(this: HTMLElement) {
-  const nearestExplorer = this.closest(".explorer") as HTMLElement
+  const nearestExplorer = this.closest(".explorer") as HTMLElement  
   if (!nearestExplorer) return
   nearestExplorer.classList.toggle("collapsed")
   nearestExplorer.setAttribute(

@@ -67,6 +67,7 @@
   @media all and ($mobile) {
     button.mobile-explorer {
       display: flex;
+      position:relative;
     }
 
     button.desktop-explorer {
