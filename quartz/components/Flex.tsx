@@ -1,4 +1,5 @@
 import { concatenateResources } from "../util/resources"
+import { classNames } from "../util/lang"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
 type FlexConfig = {
@@ -27,7 +28,10 @@ export default ((config: FlexConfig) => {
     const justifyContent = config.justifyContent ?? "center"
 
     return (
-      <div style={`display: flex; flex-direction: ${direction}; flex-wrap: ${wrap}; gap: ${gap}; justify-content: ${justifyContent}; align-items: ${alignItems}`}>
+      <div
+        class={classNames(props.displayClass, "flex-component")}
+        style={`flex-direction: ${direction}; flex-wrap: ${wrap}; gap: ${gap};`}
+      >
         {config.components.map((c) => {
           const grow = c.grow ? 1 : 0
           const shrink = (c.shrink ?? true) ? 1 : 0
@@ -38,7 +42,14 @@ export default ((config: FlexConfig) => {
 
           return (
             <div
-              style={`display: flex; flex-grow: ${grow}; flex-shrink: ${shrink}; flex-basis: ${basis}; order: ${order}; align-self: ${align}; justify-self: ${justify};`}
+              style={{
+                display: "flex",
+                flex-grow: grow},
+                flex-shrink: shrink,
+                flex-basis: basis,
+                order: order,
+                align-self: align,
+                justify-self: justify}
             >
               <c.Component {...props} />
             </div>

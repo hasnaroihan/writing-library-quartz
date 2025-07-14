@@ -51,8 +51,10 @@ export const defaultContentPageLayout: PageLayout = {
           shrink: false,
         },
         { Component: Component.Darkmode() },
-      ]
-    })
+        { Component: Component.ReaderMode() },
+      ],
+    }),
+    Component.Explorer(),
   ],
   right: [
     Component.Graph(),
