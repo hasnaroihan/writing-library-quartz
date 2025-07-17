@@ -1,45 +1,45 @@
 @use "../../styles/variables.scss" as *;
 
 .search {
-  min-width: fit-content;
-  @media all and ($mobile) {
-    flex-grow: 1;
-  }
+  // min-width: fit-content;
+  // @media all and ($mobile) {
+  //   flex-grow: 1;
+  // }
 
-  & > .search-button {
-    background-color: color-mix(in srgb, var(--lightgray) 60%, var(--light));
-    border: none;
-    border-radius: 4px;
-    font-family: inherit;
-    font-size: inherit;
-    height: 2rem;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    text-align: inherit;
-    cursor: pointer;
-    white-space: nowrap;
-    width: 100%;
-    justify-content: space-between;
+  // & > .search-button {
+  //   background-color: color-mix(in srgb, var(--lightgray) 60%, var(--light));
+  //   border: none;
+  //   border-radius: 4px;
+  //   font-family: inherit;
+  //   font-size: inherit;
+  //   height: 2rem;
+  //   padding: 0;
+  //   display: flex;
+  //   align-items: center;
+  //   text-align: inherit;
+  //   cursor: pointer;
+  //   white-space: nowrap;
+  //   width: 100%;
+  //   justify-content: space-between;
 
-    & > p {
-      display: inline;
-      padding: 0 1rem;
-    }
+  //   & > p {
+  //     display: inline;
+  //     padding: 0 1rem;
+  //   }
 
-    & svg {
-      cursor: pointer;
-      width: 18px;
-      min-width: 18px;
-      margin: 0 0.5rem;
+  //   & svg {
+  //     cursor: pointer;
+  //     width: 18px;
+  //     min-width: 18px;
+  //     margin: 0 0.5rem;
 
-      .search-path {
-        stroke: var(--darkgray);
-        stroke-width: 2px;
-        transition: stroke 0.5s ease;
-      }
-    }
-  }
+  //     .search-path {
+  //       stroke: var(--darkgray);
+  //       stroke-width: 2px;
+  //       transition: stroke 0.5s ease;
+  //     }
+  //   }
+  // }
 
   & > .search-container {
     position: fixed;
@@ -47,11 +47,13 @@
     z-index: 999;
     left: 0;
     top: 0;
+    right:0;
     width: 100vw;
     height: 100vh;
     overflow-y: auto;
     display: none;
     backdrop-filter: blur(4px);
+    padding: 0;
 
     &.active {
       display: inline-block;

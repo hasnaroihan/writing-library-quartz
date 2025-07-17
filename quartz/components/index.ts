@@ -25,6 +25,8 @@ import EssentialExplorer from "./EssentialExplorer"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import ExplorerContainer from "./ExplorerContainer"
+import FlexExplorer from "./FlexExplorer"
+import SearchButton from "./SearchButton"
 
 export {
   ArticleTitle,
@@ -54,4 +56,6 @@ export {
   Flex,
   ConditionalRender,
   ExplorerContainer,
+  FlexExplorer,
+  SearchButton
 }

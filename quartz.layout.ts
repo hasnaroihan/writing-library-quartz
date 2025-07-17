@@ -27,7 +27,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.TagList(),
   ],
   left: [
-    Component.DesktopOnly(Component.PageTitle()),
+    Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     // Component.Flex({
     //   components: [
@@ -43,18 +43,43 @@ export const defaultContentPageLayout: PageLayout = {
     //   ],
     // }),
     //Component.DesktopOnly(Component.Explorer()),
-    Component.ExplorerContainer({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-          shrink: false,
-        },
-        { Component: Component.Darkmode() },
-        { Component: Component.ReaderMode() },
-      ],
-    }),
-    Component.Explorer(),
+    // Component.ExplorerContainer({
+    //   components: [
+    //     {
+    //       Component: Component.Search(),
+    //       grow: true,
+    //       shrink: false,
+    //     },
+    //     { Component: Component.Darkmode() },
+    //     { Component: Component.ReaderMode() },
+    //   ],
+    // }),
+    //Component.Explorer(),
+    Component.FlexExplorer({
+      title: "Explore",
+      folderDefaultState: "collapsed",
+      flexConfig: {
+        direction: "row",
+        gap: "0.75rem",
+        components: [
+          {
+            Component: Component.SearchButton(),
+            grow: true,
+            shrink: false,
+          },
+          {
+            Component: Component.Darkmode(),
+            grow: false,
+            shrink: true,
+          },
+          {
+            Component: Component.ReaderMode(),
+            grow: false,
+            shrink: true,
+          },
+        ],
+      }
+    })
   ],
   right: [
     Component.Graph(),
@@ -69,22 +94,31 @@ export const defaultListPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      gap: "0rem",
-      alignItems: "center",
-      justifyContent: "center",
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-          shrink: false,
-        },
-        { Component: Component.Darkmode(),
-        },
-      ],
-      
+    Component.FlexExplorer({
+      title: "Explore",
+      folderDefaultState: "collapsed",
+      flexConfig: {
+        direction: "row",
+        gap: "0.75rem",
+        components: [
+          {
+            Component: Component.SearchButton(),
+            grow: true,
+            shrink: false,
+          },
+          {
+            Component: Component.Darkmode(),
+            grow: false,
+            shrink: true,
+          },
+          {
+            Component: Component.ReaderMode(),
+            grow: false,
+            shrink: true,
+          },
+        ],
+      }
     }),
-    Component.Explorer(),
   ],
   right: [],
 }

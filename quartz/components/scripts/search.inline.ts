@@ -149,8 +149,8 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
 
   const sidebar = container.closest(".sidebar") as HTMLElement | null
 
-  const searchButton = searchElement.querySelector(".search-button") as HTMLButtonElement
-  if (!searchButton) return
+  // const searchButton = searchElement.querySelector(".search-button") as HTMLButtonElement
+  // if (!searchButton) return
 
   const searchBar = searchElement.querySelector(".search-bar") as HTMLInputElement
   if (!searchBar) return
@@ -186,7 +186,7 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
     }
     searchLayout.classList.remove("display-results")
     searchType = "basic" // reset search type after closing
-    searchButton.focus()
+    // searchButton.focus()
   }
 
   function showSearch(searchTypeNew: SearchType) {
@@ -451,8 +451,8 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
 
   document.addEventListener("keydown", shortcutHandler)
   window.addCleanup(() => document.removeEventListener("keydown", shortcutHandler))
-  searchButton.addEventListener("click", () => showSearch("basic"))
-  window.addCleanup(() => searchButton.removeEventListener("click", () => showSearch("basic")))
+  // searchButton.addEventListener("click", () => showSearch("basic"))
+  // window.addCleanup(() => searchButton.removeEventListener("click", () => showSearch("basic")))
   searchBar.addEventListener("input", onType)
   window.addCleanup(() => searchBar.removeEventListener("input", onType))
 

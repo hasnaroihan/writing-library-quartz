@@ -24,8 +24,8 @@ export default ((config: FlexConfig) => {
     const direction = config.direction ?? "row"
     const wrap = config.wrap ?? "nowrap"
     const gap = config.gap ?? "1rem"
-    const alignItems = config.alignItems ?? "center"
-    const justifyContent = config.justifyContent ?? "center"
+    // const alignItems = config.alignItems ?? "center"
+    // const justifyContent = config.justifyContent ?? "center"
 
     return (
       <div
@@ -42,7 +42,7 @@ export default ((config: FlexConfig) => {
 
           return (
             <div
-              style={`display: flex; flex-grow: ${grow}; flex-shrink: ${shrink}; flex-basis: ${basis}; order: ${order}; align-self: ${align}; justify-self: ${justify};`}
+              style={`flex-grow: ${grow}; flex-shrink: ${shrink}; flex-basis: ${basis}; order: ${order}; align-self: ${align}; justify-self: ${justify};`}
             >
               <c.Component {...props} />
             </div>
