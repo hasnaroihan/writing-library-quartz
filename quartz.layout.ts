@@ -29,32 +29,6 @@ export const defaultContentPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    // Component.Flex({
-    //   components: [
-    //     {
-    //       Component: Component.MobileOnly(Component.Explorer()),
-    //     },
-    //     {
-    //       Component: Component.Search(),
-    //       grow: true,
-    //       shrink: false,
-    //     },
-    //     { Component: Component.Darkmode() },
-    //   ],
-    // }),
-    //Component.DesktopOnly(Component.Explorer()),
-    // Component.ExplorerContainer({
-    //   components: [
-    //     {
-    //       Component: Component.Search(),
-    //       grow: true,
-    //       shrink: false,
-    //     },
-    //     { Component: Component.Darkmode() },
-    //     { Component: Component.ReaderMode() },
-    //   ],
-    // }),
-    //Component.Explorer(),
     Component.FlexExplorer({
       title: "Explore",
       folderDefaultState: "collapsed",
@@ -68,18 +42,34 @@ export const defaultContentPageLayout: PageLayout = {
             shrink: false,
           },
           {
-            Component: Component.Darkmode(),
+            Component: Component.DesktopOnly(Component.Darkmode()),
             grow: false,
             shrink: true,
           },
           {
-            Component: Component.ReaderMode(),
+            Component: Component.DesktopOnly(Component.ReaderMode()),
             grow: false,
             shrink: true,
           },
         ],
       }
-    })
+    }),
+    Component.MobileOnly(Component.Flex({
+      direction: "row",
+      gap: "0.75rem",
+      alignItems: "center",
+      justifyContent: "center",
+      marginLeft: "auto",
+      padding: "0 1rem 0 0",
+      components: [
+        {
+          Component: Component.Darkmode()
+        },
+        {
+          Component: Component.ReaderMode()
+        }
+      ]
+    })),
   ],
   right: [
     Component.Graph(),
@@ -107,18 +97,34 @@ export const defaultListPageLayout: PageLayout = {
             shrink: false,
           },
           {
-            Component: Component.Darkmode(),
+            Component: Component.DesktopOnly(Component.Darkmode()),
             grow: false,
             shrink: true,
           },
           {
-            Component: Component.ReaderMode(),
+            Component: Component.DesktopOnly(Component.ReaderMode()),
             grow: false,
             shrink: true,
           },
         ],
       }
     }),
+    Component.MobileOnly(Component.Flex({
+      direction: "row",
+      gap: "0.75rem",
+      alignItems: "center",
+      justifyContent: "center",
+      marginLeft: "auto",
+      padding: "0 1rem 0 0",
+      components: [
+        {
+          Component: Component.Darkmode()
+        },
+        {
+          Component: Component.ReaderMode()
+        }
+      ]
+    })),
   ],
   right: [],
 }

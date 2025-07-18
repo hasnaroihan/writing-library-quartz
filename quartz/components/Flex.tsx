@@ -16,7 +16,9 @@ type FlexConfig = {
   wrap?: "nowrap" | "wrap" | "wrap-reverse"
   gap?: string
   justifyContent?: "flex-start" | "flex-end" | "center"
-  alignItems?: "flex-start" | "flex-end" | "center" 
+  alignItems?: "flex-start" | "flex-end" | "center"
+  marginLeft?: "auto"
+  padding?: string
 }
 
 export default ((config: FlexConfig) => {
@@ -24,13 +26,17 @@ export default ((config: FlexConfig) => {
     const direction = config.direction ?? "row"
     const wrap = config.wrap ?? "nowrap"
     const gap = config.gap ?? "1rem"
+    const marginLeft = config.marginLeft ?? "none"
+    const padding = config.padding ?? "0"
     // const alignItems = config.alignItems ?? "center"
     // const justifyContent = config.justifyContent ?? "center"
 
     return (
       <div
         class={classNames(props.displayClass, "flex-component")}
-        style={`flex-direction: ${direction}; flex-wrap: ${wrap}; gap: ${gap};`}
+        style={`flex-direction: ${direction};
+        flex-wrap: ${wrap};gap: ${gap};
+        margin-left: ${marginLeft}; padding: ${padding}`}
       >
         {config.components.map((c) => {
           const grow = c.grow ? 1 : 0
@@ -40,9 +46,14 @@ export default ((config: FlexConfig) => {
           const align = c.align ?? "center"
           const justify = c.justify ?? "center"
 
+
           return (
             <div
-              style={`flex-grow: ${grow}; flex-shrink: ${shrink}; flex-basis: ${basis}; order: ${order}; align-self: ${align}; justify-self: ${justify};`}
+              style={`display: flex;
+                flex-grow: ${grow};
+                flex-shrink: ${shrink};
+                flex-basis: ${basis}; order: ${order};
+                align-items: ${align}; justify-content: ${justify};`}
             >
               <c.Component {...props} />
             </div>

@@ -2,6 +2,7 @@
 
 .search {
     min-width: fit-content;
+    width: 100%;
     @media all and ($mobile) {
         flex-grow: 1;
     }
